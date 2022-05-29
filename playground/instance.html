@@ -8,15 +8,18 @@
 </head>
 <body>
     <div id="app">
-        Hello
+
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
     <script>
-       // $('#app');
-        var div = document.querySelector('#app');
-        console.log(div);
-        var str = '안녕 세계';
-        div.innerHTML = str;
-        str = '안녕 세계!!!';
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'hi'
+            }
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reactivity 실습</title>
+</head>
+<body>
+    <div id="app">
+
+        <script>
+            var div = document.querySelector('#app');
+            // div.innerHTML = 'hello vue';
+            var viewModel = {};
+
+            // 객체의 동작을 재정의하는 API
+            // Object.defineProperty(대상객체, 객체속성, {
+            //     // 내용
+            // })
+            (function() {
+                function init(){
+                    Object.defineProperty(viewModel, 'str', {
+                        // 속성에 접근했을 때의 동작
+                        get: function() {
+                            console.log('접근');
+                        },
+                        // 속성에 값을 할당했을 때의 동작
+                        set: function(newValue){
+                            console.log('할당', newValue);
+                            render(newValue);
+                        }
+                    });
+                }
+
+                function render(value){
+                    div.innerHTML = value;
+                }
+
+                init();
+
+        })();
+        </script>
+    </div>
+</body>
+</html>
